@@ -1,8 +1,12 @@
 image: docker
 
 services:
-    - docker:dind
+ - docker:dind
+
+before_script:
+ - export
+ - docker login -u maxon_de_alvares -p XXXXXX registry.gitlab.com
     
-build:
-    script:
-        -docker build --tag maxon:latest .
+build_image:
+ script:
+  - docker build .
